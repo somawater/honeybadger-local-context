@@ -17,11 +17,13 @@ Jeweler::Tasks.new do |gem|
   gem.name = "honeybadger-local-context"
   gem.homepage = "http://github.com/tronathan/honeybadger-local-context"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Adds local method context to Honeybadger}
+  gem.description = %Q{Adds the local method context to Honeybadger notifications}
   gem.email = "jonathan.yankovich@gmail.com"
   gem.authors = ["Jonathan Yankovich"]
   # dependencies defined in Gemfile
+  gem.add_dependency 'honeybadger'
+  gem.add_dependency 'binding_of_caller'
 end
 Jeweler::RubygemsDotOrgTasks.new
 
@@ -32,19 +34,11 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
-end
-
 task :default => :test
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+  version = File.exist?('VERSION') ? File.read('VERSION') : "0.1"
 
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "honeybadger-local-context #{version}"

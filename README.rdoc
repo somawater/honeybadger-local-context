@@ -1,4 +1,4 @@
-= honeybadger-local-context
+= Honeybadger Local Context
 
 Adds local variables to Honeybadger's notifications. Useful when using Honeybadger in a rake task where you don't have context why the error occurred.
 

@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
+    "honeybadger-local-context.gemspec",
     "lib/honeybadger-local-context.rb",
     "test/helper.rb",
     "test/test_honeybadger-local-context.rb"

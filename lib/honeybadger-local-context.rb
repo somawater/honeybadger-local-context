@@ -1,9 +1,9 @@
 require 'honeybadger'
 require 'binding_of_caller'
+
 module Honeybadger
   class << self
-    alias_method :the_real_notify, :notify
-    def notify(exception, options = {})
+    def notify_with_context(exception, options = {})
 
       ctx = binding.of_caller(1)
       vars = eval('local_variables', ctx)
@@ -14,8 +14,9 @@ module Honeybadger
 
       puts "Notify called with options: #{options}"
 
-      return the_real_notify(exception, options)
+      return notify_without_context(exception, options)
     end
+    alias_method_chain :notify, :context
   end
 end
 

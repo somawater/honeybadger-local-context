@@ -16,7 +16,10 @@ module Honeybadger
 
       return notify_without_context(exception, options)
     end
-    alias_method_chain :notify, :context
+
+    alias_method :notify_without_context, :notify
+    alias_method :notify, :notify_with_context
+
   end
 end
 

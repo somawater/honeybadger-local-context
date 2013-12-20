@@ -12,9 +12,7 @@ module Honeybadger
       options[:context] ||= {}
       options[:context][:local_variables] = Hash[*locals_array.flatten(1)]
 
-      puts "Notify called with options: #{options}"
-
-      return notify_without_context(exception, options)
+      notify_without_context(exception, options)
     end
 
     alias_method :notify_without_context, :notify
